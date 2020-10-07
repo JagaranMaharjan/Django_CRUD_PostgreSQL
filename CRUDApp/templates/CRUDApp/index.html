@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django CRUD Operation</title>
+</head>
+<body>
+    <center>
+        <h2>Django CRUD Operation With PostgreSQL</h2>
+        <hr/>
+        <a href="{% url 'insertemp' %}">Add New Employee</a>
+        <hr/>
+        <table border="1">
+            <tr>
+                <th>Employee Id</th>
+                <th>Employee Name</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Occupation</th>
+                <th>Salary</th>
+                <th>Action</th>
+            </tr>
+            {% for result in data %}
+            <tr>
+                <td>{{result.id}}</td>
+                <td>{{result.empname}}</td>
+                <td>{{result.gender}}</td>
+                <td>{{result.email}}</td>
+                <td>{{result.occupation}}</td>
+                <td>{{result.salary}}</td>
+                <td>
+                    <a href="edit/{{result.id}}">Edit</a> |
+                    <a href="delete/{{result.id}}", onclick="return confirm('Are You Sure Want To Delete The Record ?')">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django CRUD Operation</title>
+</head>
+<body>
+<center>
+    <h2>Django CRUD Operation With PostgreSQL</h2>
+    <hr/>
+    <a href="{% url 'showemp' %}">Home</a>
+    <hr/>
+    <form method="POST">
+        {% csrf_token %}
+        <table border="1">
+            <tr>
+                <td>Employee Name</td>
+                <td><input type="text" placeholder="Enter Employee Name..." , name="empname"></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <input type="radio" , name="gender" , value="M" , checked>Male
+                    <input type="radio" , name="gender" , value="F">Female
+                </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" placeholder="Enter Email..." , name="email"></td>
+            </tr>
+            <tr>
+                <td>Occupation</td>
+                <td>
+                    <select name="occupation">
+                        <option selected disabled="true">---Select Occupation---</option>
+                        <option>Programmer</option>
+                        <option>Designer</option>
+                        <option>Photographer</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Salary</td>
+                <td><input type="text" placeholder="Enter Salary..." , name="salary"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" , value="insert"></td>
+                <td>{% if messages %}
+                    {% for mess in messages %}
+                    <b style="color: red">{{mess}}</b>
+                    {% endfor %}
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+    </form>
+</center>
+</body>
+</html>
